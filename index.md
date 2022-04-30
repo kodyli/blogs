@@ -1,3 +1,3 @@
 - ## Algorithm
-    - [Overview](algorithm/overview)
-    - [Binary Search](algorithm/binarySearch)
+    - [Overview](./algorithm/overview)
+    - [Binary Search](./algorithm/binarySearch)
