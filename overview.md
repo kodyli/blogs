@@ -34,5 +34,3 @@ function test (){
 | 1 | Saleem | 24  |
 | 2 | John   | 25  |
 | 3 | Ayman  | 26  |
-
-![Test](./img/1.jpeg)
