@@ -15,7 +15,6 @@ Write something cool.. 🦊
 
 Write something cool.. 🦊
 
-> 2022-1-28
 
 ~~~js
 function test (){

@@ -1,3 +1,3 @@
-- ## [Me](/test/me)
-- ## Get Started
-    - [Overview](/overview)
+- ## Algorithm
+    - [Overview](algorithm/overview)
+    - [Binary Search](algorithm/binarySearch)
