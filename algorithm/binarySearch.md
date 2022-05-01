@@ -5,7 +5,7 @@
 - [3. Right Most](#section-3)
 
 <a name="section-1"></a>
-#### 1. Basic
+## 1. Basic
 
 [704. Binary Search](https://leetcode.com/problems/binary-search/)
 
@@ -42,10 +42,10 @@ var search = function(nums, target) {
 
 ~~~
 
-<a name="section-2"></a>
-If the array of integers is [1,2,2,2,3]，target is 2，the Basic will return 2, how about 1 instead of 2？
 
-#### 2. [Left Most](https://labuladong.github.io/algo/1/10/#二寻找左侧边界的二分搜索)
+If the array of integers is [1,2,2,2,3]，target is 2，the Basic will return 2, how about 1 instead of 2？
+<a name="section-2"></a>
+## [2. Left Most](https://labuladong.github.io/algo/1/10/#二寻找左侧边界的二分搜索)
 When nums[mid] == target, don't return mid, narrow the right index.
 ~~~js
 var leftBound = function(nums, target){
@@ -67,10 +67,10 @@ var leftBound = function(nums, target){
 };
 ~~~
 
-<a name="section-3"></a>
-If the array of integers is [1,2,2,2,3]，target is 2，the Basic will return 2, how about 3 instead of 2？
 
-#### 3. [Right Most](https://labuladong.github.io/algo/1/10/#三寻找右侧边界的二分查找)
+If the array of integers is [1,2,2,2,3]，target is 2，the Basic will return 2, how about 3 instead of 2？
+<a name="section-3"></a>
+## [3. Right Most](https://labuladong.github.io/algo/1/10/#三寻找右侧边界的二分查找)
 When nums[mid] == target, don't return mid, narrow the left index.
 ~~~js
 var rightBound = function(nums, target){
