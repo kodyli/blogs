@@ -15,7 +15,16 @@ Write something cool.. 🦊
 
 Write something cool.. 🦊
 
-
+URL
+~~~html
+./img/test.png
+./../img/test.png
+~~~
+will be replaced with
+~~~html
+app_url/img/test.png
+~~~
+Code: 
 ~~~js
 function test (){
     console.log('test');
