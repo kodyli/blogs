@@ -1,5 +1,10 @@
 # Binary Search
+---------------
+- [1. 基本二分搜索](#section-1)
+- [2. 左侧边界二分搜索](#section-2)
+- [3. 右侧边界二分搜索](#section-3)
 
+<a name="section-1"></a>
 #### 1. 基本二分搜索
 
 [704. Binary Search](https://leetcode.com/problems/binary-search/)
@@ -38,6 +43,7 @@ var search = function(nums, target) {
 
 有序数组 nums = [1,2,2,2,3]，target 为 2，此算法返回的索引是2,如果要左侧边界呢？
 
+<a name="section-2"></a>
 #### 2. [左侧边界二分搜索](https://labuladong.github.io/algo/1/10/#二寻找左侧边界的二分搜索)
 当 nums[mid] == target 时不要立即返回而要收紧右侧边界
 ~~~js
@@ -61,6 +67,7 @@ var leftBound = function(nums, target){
 ~~~
 
 同样的数据，如果需要右侧边界呢？
+<a name="section-3"></a>
 #### 3. [右侧边界二分搜索](https://labuladong.github.io/algo/1/10/#三寻找右侧边界的二分查找)
 当 nums[mid] == target 时不要立即返回而要收紧左侧边界
 ~~~js
