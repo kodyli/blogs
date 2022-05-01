@@ -1,5 +1,5 @@
-- ## Latest Updates
-    - [Binary Search](./algorithm/binarySearch)
+- ## [Latest Updates](./updates)
+    
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
