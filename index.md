@@ -1,5 +1,5 @@
 - ## [Latest Updates](./updates)
-    
+    - [Daily Challange](./algorithm/daily)
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)

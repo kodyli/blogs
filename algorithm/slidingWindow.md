@@ -1,8 +1,10 @@
 # Sliding Window
 -----------------
+
 - [1. Maximum Average Subarray I](#section-1)
 - [2. Smallest Subarray with a given sum (easy)](#section-2)
 - [3. Longest Substring with K Distinct Characters (medium)](#section-3)
+- [4. Longest Substring Without Repeating Characters (medium)](#section-4)
 
 ~~~js
 let start = 0;
@@ -122,4 +124,31 @@ function longestSubstringWithKDistinct(text, k){
 
     return maxLength;
 }
+~~~
+<a name="section-4"></a>
+## [4. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+Given a string s, find the length of the longest substring without repeating characters.
+~~~js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    let start = 0,
+        positions ={};//shrink flag
+    let max = 0;
+    
+    for(let end = 0; end < s.length; end++){
+        let c = s[end];
+        //If there is a repeating character in [start, end),
+        //shrink the window.
+        if(positions[c] != undefined && positions[c] >= start){
+            start = positions[c]+1;
+        }
+        max = Math.max(max, end - start+1);
+        positions[c] = end;
+    }
+    
+    return max;
+};
 ~~~
