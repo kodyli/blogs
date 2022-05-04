@@ -141,3 +141,74 @@ var findUnsortedSubarray = function(nums) {
 |Time Submitted|Status|Runtime|Memory|Language|
 |--------------|------|-------|------|--------|
 |05/02/2022 21:27|	Accepted|	125 ms|	46.8 MB|	javascript|
+
+## 5/4/2022
+[1679. Max Number of K-Sum Pairs](https://leetcode.com/problems/max-number-of-k-sum-pairs/)
+
+You are given an integer array nums and an integer k.
+
+In one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.
+
+Return the maximum number of operations you can perform on the array.
+~~~js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxOperations = function(nums, k) {
+    nums.sort((a,b)=>a-b);
+    let start = 0,
+        end = nums.length -1;
+    let count = 0,
+        sum = 0;
+    
+    while(start < end){
+        sum = nums[start] + nums[end];
+        if(sum < k){
+            start++;
+        }else if(sum > k){
+            end--;
+        }else{
+            count++;
+            start++;
+            end--;
+        }
+    }
+    return count;
+};
+~~~
+|Time Submitted|Status|Runtime|Memory|Language|
+|--------------|------|-------|------|--------|
+|05/03/2022 21:45|	Accepted|	258 ms|	53.4 MB|	javascript|
+~~~js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxOperations = function(nums, k) {
+    let cache = {},
+        remaining = 0;
+    
+    let count = 0;
+    for(let i = 0; i < nums.length; i++){
+        remaining = k - nums[i];
+        if(cache[remaining]){
+            count++;
+            cache[remaining]--;
+            if(!cache[remaining]){
+               delete cache[remaining];
+           }
+        }else{
+            cache[nums[i]] = cache[nums[i]] || 0;
+            cache[nums[i]]++;
+        }
+    }
+    
+    return count;
+};
+~~~
+|Time Submitted|Status|Runtime|Memory|Language|
+|--------------|------|-------|------|--------|
+|05/03/2022 21:45|	Accepted|	342 ms|	59.1 MB|	javascript|
