@@ -212,3 +212,69 @@ var maxOperations = function(nums, k) {
 |Time Submitted|Status|Runtime|Memory|Language|
 |--------------|------|-------|------|--------|
 |05/03/2022 21:45|	Accepted|	342 ms|	59.1 MB|	javascript|
+
+## 5/4/2022
+[225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
+
+Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
+
+[Queue](https://github.com/datastructures-js/queue)
+~~~js
+
+var MyStack = function() {
+    this.queue = new Queue();
+    this.cache = new Queue();
+};
+
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function(x) {
+    this.queue.enqueue(x);
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function() {
+    if(this.queue.isEmpty()){
+        return undefined;
+    }
+    while(this.queue.size()>1){
+        this.cache.enqueue(this.queue.dequeue());
+    }
+    let last = this.queue.dequeue();
+    let temp = this.queue;
+    this.queue = this.cache;
+    this.cache = temp;
+    return last;
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function() {
+    return this.queue.back();
+};
+
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function() {
+    return this.queue.isEmpty();
+};
+
+/** 
+ * Your MyStack object will be instantiated and called as such:
+ * var obj = new MyStack()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.empty()
+ */
+~~~
+|Time Submitted|Status|Runtime|Memory|Language|
+|--------------|------|-------|------|--------|
+|05/04/2022 21:08	|	Accepted|	78 ms|	41.9 MB|	javascript|
