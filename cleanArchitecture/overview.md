@@ -1,13 +1,15 @@
 # [Clean Architecture][1]
 ----------------------
 
+"Clean Architecture" is a software architectural pattern conined by Uncle Bob Martin in his book Clean Architecture. It is a standard, all design architectures meet the standard are clean architectures, like [hexagonal architecture][3], onion architecture, [BCE][2] and so on.
+
 ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
-## The Dependency Rule
+### 1. The Dependency Rule
 
 The overriding rule that makes this architecture work is The Dependency Rule. This rule says that **source code dependencies** can only point **inwards**. Nothing in an inner circle can know anything at all about something in an outer circle.
 
-### Clean Architecture can produce Systems that are:
+### 2. The Characteristices
 
 1. **Independent of Frameworks.** The architecture does not depend on the existence of some library of feature laden software. This allows you to use such frameworks as tools, rather than having to cram your system into their limited constraints.
 2. **Testable.** The business rules can be tested without the UI, Database, Web Server, or any other external element.
@@ -19,3 +21,5 @@ The overriding rule that makes this architecture work is The Dependency Rule. Th
 
 
 [1]: <https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html> "The Clean Architecture"
+[2]: <https://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350> "Boundary Control Entity"
+[3]: <https://www.amazon.com/Hands-Dirty-Clean-Architecture-hands/dp/1839211962> "Get Your Hands Dirty on Clean Architecture"
