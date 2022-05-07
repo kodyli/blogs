@@ -3,6 +3,8 @@
 
 "Clean Architecture" is a software architectural pattern conined by Uncle Bob Martin in his book Clean Architecture. It is a standard, all design architectures meet the standard are clean architectures, like [hexagonal architecture][3], onion architecture, [BCE][2] and so on.
 
+The main purpose of Clean Architecture is to allow developing a system that can adapt to changing technology. While the internet might move from desktop to web, or from web to virtual assistant, the core business remains the same.
+
 ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
 ### 1. The Dependency Rule
