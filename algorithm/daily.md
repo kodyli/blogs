@@ -278,3 +278,73 @@ MyStack.prototype.empty = function() {
 |Time Submitted|Status|Runtime|Memory|Language|
 |--------------|------|-------|------|--------|
 |05/04/2022 21:08	|	Accepted|	78 ms|	41.9 MB|	javascript|
+
+
+## 5/5/2022 (need review again)
+[1209. Remove All Adjacent Duplicates in String II](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/)
+
+You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+
+We repeatedly make k duplicate removals on s until we no longer can.
+
+Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
+
+~~~js
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+var removeDuplicates = function(s, k) {
+    let stack = [];
+    
+    for(let i=0; i<s.length; i+=1) {
+        if (stack.length && stack[stack.length - 1][0] === s[i]) {
+            stack[stack.length - 1][1] += 1;
+            if (stack[stack.length - 1][1] >= k) {
+                stack.pop();
+            }
+        } else {
+            stack.push([s[i], 1]);
+        }
+    }
+    
+    let result = '';
+    for(let i=0; i<stack.length; i+=1) {
+        result += stack[i][0].repeat(stack[i][1]);
+    }
+    return result;
+};
+~~~
+~~~js
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+var removeDuplicates = function(s, k) {
+    if(s.length<k){
+        return s;
+    }
+    
+    let result = [];
+    
+    let start = 0;
+    
+    for(let end = 0; end<s.length;end++){
+        while(s[start]!=s[end]){
+            result.push(s[start]);
+            start++;
+        }
+        if(end-start+1==k){
+            start +=k;
+        }
+    }
+    while(start<s.length){
+        result.push(s[start]);
+        start++;
+    }
+    return result.length == s.length? s : removeDuplicates(result.join(''), k);
+};
+
+~~~
