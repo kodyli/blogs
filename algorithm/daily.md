@@ -403,6 +403,18 @@ var maxProfit = function(prices) {
     return profit;
 };
 ~~~
+~~~js
+var maxProfit = function(prices) {
+    var min = 0; 
+    var profit = 0;
+    for (var i = 0; i < prices.length; i++) {
+        min = Math.min(min, prices[i]);
+        profit = Math.max(profit, prices[i] - min);
+    }
+    return profit;
+};
+~~~
 |Time Submitted|Status|Runtime|Memory|Language|
 |--------------|------|-------|------|--------|
 |05/04/2022 21:08|Time Limit Exceeded|N/A|N/A|javascript|
+|05/11/2022 23:15|Accepted|95 ms|51.3 MB|javascript|
