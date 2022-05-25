@@ -46,4 +46,6 @@ Route::get('/auth/callback', function () {
 
 ~~~
 ### [Source Code](https://github.com/laravel/socialite)
+It uses [Abstract Factory](https://refactoring.guru/design-patterns/abstract-factory) design pattern, reads configration from Laravel, and creates provider.
+
 ![Laravel Socialite](../img/laravel/socialite.svg)
