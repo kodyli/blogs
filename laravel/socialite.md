@@ -1,4 +1,4 @@
-# Socialite
+# [Socialite](https://laravel.com/docs/9.x/socialite)
 -----------
 ### Introduction
 In addition to typical, form based authentication, Laravel also provides a simple, convenient way to authenticate with OAuth providers using Laravel Socialite. Socialite currently supports authentication via Facebook, Twitter, LinkedIn, Google, GitHub, GitLab, and Bitbucket.
@@ -45,5 +45,5 @@ Route::get('/auth/callback', function () {
 });
 
 ~~~
-### Source Code
+### [Source Code](https://github.com/laravel/socialite)
 ![Laravel Socialite](../img/laravel/socialite.svg)
