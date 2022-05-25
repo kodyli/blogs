@@ -4,6 +4,8 @@
     - [1. Overview](./cleanArchitecture/overview)
     - [2. Galaxy](./cleanArchitecture/galaxy)
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
+- ## Laravel
+    - [Socialite](./laravel/socialite)
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
