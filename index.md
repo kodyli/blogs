@@ -6,6 +6,7 @@
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
 - ## Laravel
     - [Socialite](./laravel/socialite)
+    - [Redis](./laravel/redis)
     - [Cache](./laravel/cache)
 - ## Algorithm
     - [Overview](./algorithm/overview)
