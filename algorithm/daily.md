@@ -421,3 +421,42 @@ var maxProfit = function(prices) {
 |--------------|------|-------|------|--------|
 |05/04/2022 21:08|Time Limit Exceeded|N/A|N/A|javascript|
 |05/11/2022 23:15|Accepted|95 ms|51.3 MB|javascript|
+
+
+## 5/30/2022
+[139. Word Break](https://leetcode.com/problems/word-break/)
+Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+~~~js
+/**
+ * @param {string} s
+ * @param {string[]} wordDict
+ * @return {boolean}
+ */
+var wordBreak = function(s, wordDict) {
+    var cache ={};
+    var found = function(start){
+        if(cache[start]!=undefined){
+            return cache[start];
+        }
+        for(var w of wordDict){
+            var l = w.length;
+            var sub = s.substring(start, start+l);
+            if(sub == w){
+                if(start+l==s.length){
+                    cache[start]= true;
+                    return true;
+                }else if(start+l<s.length && found(start+l)){
+                    cache[start]= true;
+                    return true;
+                }
+            }
+        }
+        cache[start]= false;
+        return false;
+    };
+    return found(0);
+};
+~~~
