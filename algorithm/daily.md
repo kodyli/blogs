@@ -460,3 +460,34 @@ var wordBreak = function(s, wordDict) {
     return found(0);
 };
 ~~~
+## 5/31/2022
+[162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)
+A peak element is an element that is strictly greater than its neighbors.
+
+Given an integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+
+You may imagine that nums[-1] = nums[n] = -∞.
+
+You must write an algorithm that runs in O(log n) time.
+
+~~~js
+//convert to find a Max in subarray
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findPeakElement = function(nums) {
+    var l = 0,
+        r = nums.length;
+    while(l<r){
+        var m = l + Math.floor((r-l)/2);
+        if(nums[m]<nums[m+1]){
+            l = m+1;
+        }else{
+            r = m;
+        }
+    }
+    return l;
+};
+
+~~~
