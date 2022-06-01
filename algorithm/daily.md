@@ -459,6 +459,38 @@ var wordBreak = function(s, wordDict) {
     };
     return found(0);
 };
+
+
+// y = f(x), x stands for the relationship bewteen state and choices[i].
+
+/**
+ * @param {string} s
+ * @param {string[]} wordDict
+ * @return {boolean}
+ */
+var wordBreak = function(s, wordDict) {
+    //wordDict.sort(function(a,b){return a.length-b.length;});
+    var cache ={};
+    var found = function(start){
+        if(start == s.length){
+            return true;
+        }
+        if(cache[start]!=undefined){
+            return cache[start];
+        }
+        for(var w of wordDict){
+            var l = w.length;
+            var sub = s.substring(start, start+l);
+            if(sub == w && found(start+l)){
+                cache[start]= true;
+                return true;
+            }
+        }
+        cache[start]= false;
+        return false;
+    };
+    return found(0);
+};
 ~~~
 ## 5/31/2022
 [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)
