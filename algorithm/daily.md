@@ -523,3 +523,39 @@ var findPeakElement = function(nums) {
 };
 
 ~~~
+## 6/1/2022
+[1025. Divisor Game](https://leetcode.com/problems/divisor-game/)
+Alice and Bob take turns playing a game, with Alice starting first.
+
+Initially, there is a number n on the chalkboard. On each player's turn, that player makes a move consisting of:
+
+Choosing any x with 0 < x < n and n % x == 0.
+Replacing the number n on the chalkboard with n - x.
+Also, if a player cannot make a move, they lose the game.
+
+Return true if and only if Alice wins the game, assuming both players play optimally.
+
+~~~js
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var divisorGame = function(n, cache) {
+    cache = cache || {};
+    if(cache[n]!=undefined){
+        return cache[n];
+    }
+    var x = n-1;
+    while(x>0){
+        //Alice pick a number, and Bob can not pick a correct number,
+        //then the number is the first number that Alice should pick.
+        if(n%x==0 && !divisorGame(n-x, cache)){
+            cache[n]=true;
+            return cache[n];
+        }
+        x = x-1;
+    }
+    cache[n] = false;
+    return cache[n];
+};
+~~~
