@@ -559,3 +559,24 @@ var divisorGame = function(n, cache) {
     return cache[n];
 };
 ~~~
+## 6/2/2022 (need review again)
+[168. Excel Sheet Column Title](https://leetcode.com/problems/excel-sheet-column-title/)
+~~~js
+/**
+ * @param {number} columnNumber
+ * @return {string}
+ */
+var convertToTitle = function(columnNumber, columns) {
+    if(columnNumber<1){return "";}
+    columns = columns || ['Z','A', 'B', 'C','D','E','F','G','H','I', 'J', 'K','L','M','N','O', 'P', 'Q','R','S','T','U', 'V', 'W','X','Y'];
+    var l = columns.length;
+    var remaining = columnNumber%l,
+        column = columns[remaining];
+    if(remaining==0){
+        columnNumber = (columnNumber/l)-1;
+    }else{
+        columnNumber = (columnNumber - remaining)/l;
+    }
+    return convertToTitle(columnNumber, columns) + column;
+};
+~~~
