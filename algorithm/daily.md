@@ -580,3 +580,33 @@ var convertToTitle = function(columnNumber, columns) {
     return convertToTitle(columnNumber, columns) + column;
 };
 ~~~
+
+## 6/13/2022
+[392. Is Subsequence](https://leetcode.com/problems/is-subsequence/)
+~~~js
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isSubsequence = function(s, t, cache) {
+    cache = cache ||{};
+    if(s.length == 0){
+        return true;
+    }
+    var key = s+t;
+    if(cache[key] != undefined){
+        return cache[key];
+    }
+    var i = t.indexOf(s[0]);
+    while(i >= 0){
+        if(isSubsequence(s.slice(1), t.slice(i+1), cache)){
+            cache[key] = true;
+           return cache[key];
+        }
+        i = t.indexOf(s[0],i+1);
+    }
+    cache[key] = false;
+    return cache[key];
+};
+~~~
