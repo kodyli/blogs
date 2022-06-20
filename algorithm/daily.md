@@ -610,3 +610,71 @@ var isSubsequence = function(s, t, cache) {
     return cache[key];
 };
 ~~~
+
+## 6/15/2022
+[203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/)
+Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+
+**dum node**
+~~~js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+var removeElements = function(head, val) {
+    var dum = new ListNode();
+    dum.next = head;
+    var next = dum;
+    
+    while(next.next){
+        if(next.next.val == val){
+            next.next = next.next.next;
+        }else{
+            next = next.next;
+        }
+    }
+    return dum.next;
+};
+~~~
+[204. Count Primes](https://leetcode.com/problems/count-primes/)
+Given an integer n, return the number of prime numbers that are strictly less than n.
+~~~js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+
+var countPrimes = function(n) {
+    var primes = [];
+    for(var i =2; i<n;i++){
+        if(primes.length){
+            var found = false;
+            for(var j = 0; j<primes.length;j++){
+                if(i%primes[j]==0){
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                primes.push(i);
+            }
+        }else{
+            primes.push(i);
+        }
+    }
+    return primes.length;
+};
+~~~
+0 <= n <= 5 * 10<sup>6</sup>
+Last executed input 499979
+|Time Submitted|Status|Runtime|Memory|Language|
+|--------------|------|-------|------|--------|
+|05/04/2022 21:08|Time Limit Exceeded|N/A|N/A|javascript|
