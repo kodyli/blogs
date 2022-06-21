@@ -6,6 +6,7 @@
     - [1. Overview](./cleanArchitecture/overview)
     - [2. Galaxy](./cleanArchitecture/galaxy)
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
+    - [4. Archetypes, Color](./cleanArchitecture/colorModeling)
 - ## Laravel
     - [Socialite](./laravel/socialite)
     - [Redis](./laravel/redis)
@@ -14,7 +15,5 @@
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
     - [Sliding Window](./algorithm/slidingWindow)  
-- ## Java Modeling Color with UML
-    - [1. Archetypes, Color, and the Domain-Neutral Component](./javaModelingColorWithUml/1)
 - ## ERP
     - [Index](./erp/index)
