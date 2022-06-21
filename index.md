@@ -13,10 +13,8 @@
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
-    - [Sliding Window](./algorithm/slidingWindow)
-    
+    - [Sliding Window](./algorithm/slidingWindow)  
 - ## Java Modeling Color with UML
-    - [Archetypes, Color, and the Domain-Neutral Component](./javaModelingColorWithUml/1)
-    
+    - [1. Archetypes, Color, and the Domain-Neutral Component](./javaModelingColorWithUml/1)
 - ## ERP
     - [Index](./erp/index)
