@@ -1,21 +1,21 @@
-- ## [Latest Updates](./updates)
-    - [Daily Challange](./algorithm/daily)
-- ## Java
-    - [Concurrency](./java/concurrency)
+
 - ## Clean Architecture
     - [1. Overview](./cleanArchitecture/overview)
     - [2. Galaxy](./cleanArchitecture/galaxy)
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
-    - [4. Archetypes, Color](./cleanArchitecture/colorModeling)
-    - [5. Data Mapper](./cleanArchitecture/dataMapper)
-    - [6. New Design](./cleanArchitecture/design)
+    - [4. New Design](./cleanArchitecture/design)
+    - [5. Archetypes, Color](./cleanArchitecture/colorModeling)
+    - [6. Data Mapper](./cleanArchitecture/dataMapper)
 - ## Laravel
     - [Socialite](./laravel/socialite)
     - [Redis](./laravel/redis)
     - [Cache](./laravel/cache)
+- ## Java
+    - [Concurrency](./java/concurrency)
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
     - [Sliding Window](./algorithm/slidingWindow)  
 - ## ERP
     - [Index](./erp/index)
+- ## [Daily Challange](./algorithm/daily)

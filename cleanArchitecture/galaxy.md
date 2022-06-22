@@ -25,7 +25,9 @@ package  com.kody.timesheet
 
 And then we can follow [Use Case Driven Development](./cleanArchitecture/useCaseDriven) to develop our application.
 
-But the data mapping between boundaries will be a lot job.[4]
+Long term developers will work on the use cases; sort term developers who do not understand the business rules will work on the adapters.
+
+But the data mapping between boundaries will be a lot work.[4]
 
 #### 2. How do we test business rules?
 
