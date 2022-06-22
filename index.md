@@ -8,6 +8,7 @@
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
     - [4. Archetypes, Color](./cleanArchitecture/colorModeling)
     - [5. Data Mapper](./cleanArchitecture/dataMapper)
+    - [6. New Design](./cleanArchitecture/design)
 - ## Laravel
     - [Socialite](./laravel/socialite)
     - [Redis](./laravel/redis)
