@@ -1,4 +1,4 @@
-## 1 Archetypes, Color
+# 1 Archetypes, Color
 ------
 #### 1.1 Archetypes
 **A form from which all things of the same kind more or less follow.**
