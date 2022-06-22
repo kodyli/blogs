@@ -1,3 +1,4 @@
 # Latest Updates
 ----------------
-[Binary Search](./algorithm/binarySearch)
+[Galaxy](./cleanArchitecture/galaxy)
+[Daily Challange](./algorithm/daily)
