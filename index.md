@@ -7,6 +7,7 @@
     - [2. Galaxy](./cleanArchitecture/galaxy)
     - [3. Use Case Driven Development](./cleanArchitecture/useCaseDriven)
     - [4. Archetypes, Color](./cleanArchitecture/colorModeling)
+    - [5. Data Mapper](./cleanArchitecture/dataMapper)
 - ## Laravel
     - [Socialite](./laravel/socialite)
     - [Redis](./laravel/redis)
