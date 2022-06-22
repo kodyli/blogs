@@ -677,4 +677,88 @@ var countPrimes = function(n) {
 Last executed input 499979
 |Time Submitted|Status|Runtime|Memory|Language|
 |--------------|------|-------|------|--------|
-|05/04/2022 21:08|Time Limit Exceeded|N/A|N/A|javascript|
+|06/15/2022 22:44|Time Limit Exceeded|N/A|N/A|javascript|
+
+~~~js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var countPrimes = function(n) {
+    var notPrimes = [];
+    for(var i =2; i*i<n; i++){
+        if(!notPrimes[i]){
+            for(var j = i*i;j<n;j+=i){
+                notPrimes[j]=true;
+            }
+        }
+    }
+    var count = 0;
+    for(var i = 2; i<n;i++){
+        if(!notPrimes[i]){
+            count++;
+        }
+    }
+    return count;
+};
+~~~
+|Time Submitted|Status|Runtime|Memory|Language|
+|--------------|------|-------|------|--------|
+|06/15/2022 23:25|Accepted|1230 ms|154.2 MB|javascript|
+
+[2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+~~~js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    var dum1 = new ListNode(0, l1);
+    var dum2 = new ListNode(0, l2);
+    var dum = new ListNode(0, new ListNode(0, null));
+    
+    var next1 = dum1.next,
+        next2 = dum2.next,
+        next = dum.next;
+    
+    while(next1||next2){
+        var sum = 0;
+        if(next1 && next2){
+            sum = next1.val+next2.val+next.val;
+            next1 = next1.next;
+            next2 = next2.next;
+        }else if(next1){
+            sum = next1.val+next.val;
+            next1 = next1.next;
+        }else if(next2){
+            sum = next2.val+next.val;
+            next2 = next2.next;
+        }
+        console.log(sum);
+        if(sum>=10){
+            next.val = sum-10;
+            next.next = new ListNode(1, null);
+        }else{
+            next.val = sum;
+            if(next1||next2){
+                next.next = new ListNode(0, null);
+            }
+        }
+        
+    }
+    return dum.next;
+};
+
+~~~
