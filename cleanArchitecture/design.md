@@ -2,18 +2,27 @@
 ------------------------------------------
 ![New Design](../img/cleanArchitecture/design.svg)
 ### Framework needs to do:
-1. Mapping user input to Command object, and construct the Use Case Request.
-2. Run the use case.
-3. Implements persistence layer and manages the database transactions.
-4. return data to client.
+Web Layer:
+1. Map HTTP request to Command objects.(auto)
+2. Map input to the Request of the use case.
+3. Call the use case
+4. Map output of the use case back to HTTP.
+5. Return HTTP response.(auto)
+
+Persistence Layer:
+1. Take input.
+2. Map input into database format.
+3. Send input to the database.
+4. Map database output into entity format.
+5. Return output.
 
 ### Kernel needs to do:
-1. Receive requests from framework.
+1. Take input
 2. Do input validation and business validation.
-3. Execute the requst.
-4. return data to framework.
+3. Manipulate entity state
+4. return output.
 
-When we need a new framework, we could only implements the same codes in the new framework, and reuse the kernel. Because the framework codes do not include business rules and the most works are transfering data, run use case code from the kernel, so new junior team memenbers can still easily implement the code.
+When we need a new framework, we could only implements the same codes in the new framework, and reuse the kernel. Because the framework codes do not include business rules and the most works are transfering data format, run use case code from the kernel, so new team memenbers can still easily implement the code.
 
 ~~~md
 @startuml
