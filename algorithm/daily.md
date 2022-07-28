@@ -746,7 +746,6 @@ var addTwoNumbers = function(l1, l2) {
             sum = next2.val+next.val;
             next2 = next2.next;
         }
-        console.log(sum);
         if(sum>=10){
             next.val = sum-10;
             next.next = new ListNode(1, null);
@@ -756,7 +755,7 @@ var addTwoNumbers = function(l1, l2) {
                 next.next = new ListNode(0, null);
             }
         }
-        
+        next = next.next;
     }
     return dum.next;
 };
