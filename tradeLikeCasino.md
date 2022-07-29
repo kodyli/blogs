@@ -68,16 +68,17 @@ Stress testing attempts to determine how bad this low probability event could be
 
 #### 2.3 Apex of Pyramid
 ##### 2.3.1 Management Discretion
+
 ### 3. Maintaining Unwavering Discipline
 How does the casino handle inevitable periods of player success? Do they become despondent, close the casino, or start betting on the sucess of the players? Quite the contrary; when players win, the casino goes wild with lights and noises, all empha- sizing the point that despite probability favoring the house, it is possible for players to win. The goal is to have the casino’s attitude of unwavering discipline in the face of losses.
 
 **Lack of Confidence in the Model.**
 
-### 3. Analyzing Performance
+### 4. Analyzing Performance
 This section explores a variety of techniques for consistently and exhaustively examinging your actions so you can eliminate delusional notions and learn from your trading results.
 
-#### 3.1 A Due Diligence Questionnaire
-##### 3.1.1 About the Trader
+#### 4.1 A Due Diligence Questionnaire
+##### 4.1.1 About the Trader
 These questions force traders to examine their unique circumstances and how such cicumstances affect their operation in the markets. Included in this section are questions regarding issues of trading time constraints, financial constraints, liquidity risk issues, and psychological trading biases.
 
 1. Do you have other professional time commitments?
@@ -95,7 +96,7 @@ If you did not develop the strategies traded, are they a black box?
 9. Does your organization follow a specific protocol in trading new traders?
 Paper trade on a demo version of your broker's execution platform. This accomplishes serveral things, including familiarizing traders with trade execution on the platform, encouraging testing, and development of rule-based positive expectancy methodologies as well as somewhat acclimating them to the emotional and intellectual challenges of speculative trading.
 
-##### 3.1.2 About the Performance Redcord
+##### 4.1.2 About the Performance Redcord
 
 1. Is your performance record real or hypothetical?
 This section offers readers a comprehensive trading jouranl for use as a template to track one's trading performance record. 
@@ -104,7 +105,7 @@ This question forces us to examine the volatility of assets traded, position-siz
 3. Does the typical number of trades executed change during wining or losing periods?
 This question force beginners to identity periods of revenge trading, in addition to alerting more experienced traders as to how their models are affected by bull and bear markets as well as if they are affected by the cyclical nature of volatility.
 
-##### 3.1.3 About the Methodologies
+##### 4.1.3 About the Methodologies
 The primary purpose of questions regarding methodologies is the identification and elimination of irrational trading biases. That stated, these questions also force traders to systematically strengths and weaknesses of their methodologies, whcih often results in modifications so as to make the models more robust.
 
 1. How would you describe all of the various methodologies employed?
@@ -130,7 +131,7 @@ Modification of positive expectancy models is an integral aspect of making metho
 19. What are your rate of return and worst peak-to-vally equity drawdown objectives?
 20. What type of instruments(cash foreign exchaange, futures, options, equities, futures spreads, and so on) do you trade?
 Trading of various vehicles entails specific types of liquidity risk, time constraints, volatitity issues, price shock event risk, and so on.
-##### 3.1.4 Risk Management
+##### 4.1.4 Risk Management
 1. How are position-sizing limits determined?
 2. How are you accounting for correlations between assets traded and changes in volatitities of assets?
 The safest way to work with correlations is to use them as risk management tools to prevent overleveraging. Correlations change all the time, and then they change again.
@@ -144,16 +145,17 @@ Time-based stops, indicatior-driven stops, price stopes, volatility stops, and m
 8. What percentage drawdown would result in closure of your account?
 20%?
 
-##### 3.1.5 Trade Execution Considerations
+##### 4.1.5 Trade Execution Considerations
 Execution considerations are especially useful in forcing traders to identify and plan for real-time implementation of the methodologies.
 
 1. Do you execute trades 24 hours a day?
 2. What types of orders are used for entry, exiting with profits, and exiting with losses?
 3. Are your orders executed electronically? Is order entry manual or automated?
 
-##### 3.1.6 Research and Development Considerations
+##### 4.1.6 Research and Development Considerations
 Questions in this section force readers to face the reality of how much time and resources are presently dedicated to the research and development process.
 1. Describe your research and development process, including the process for modification of methodologies.
 We do not abandon our positive expectancy model in real-time trading until we are absolutely certain that this new model is more robust and a superior fit for our trading personality.
 2. How much time and money do you dedicate to research each month?
-### 4. Trading Journal
+
+### 5. Trading Journal
