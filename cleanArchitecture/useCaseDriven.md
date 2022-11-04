@@ -2,7 +2,7 @@
 
 The main content of the following image is from books: [Use Case Driven Object Modeling with UML Theory and Practice][4] and [Object-Oriented Software Engineering: a Use Case Driven Approach][3].
 
-It is a whole process about how to convert Functional Requirements to Working Code. It frist identifies the actors who will use the application; then identifies use cases of each actor; break each use case into boundary, controll and entity; design the relationship betwen them; and finally imeplements the code.
+It is a whole process about how to convert **Functional Requirements** to **Working Code** in **Industrial System Development**. It frist identifies the actors who will use the application; then identifies use cases of each actor; break each use case into boundary, controll and entity; design the relationship betwen them; and finally imeplements the code.
 
 ![Use Case Driven Development](../img/cleanArchitecture/useCaseDriven.png)
 
