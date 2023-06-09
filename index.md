@@ -6,7 +6,7 @@
     - [4. New Design](./cleanArchitecture/design)
     - [5. Archetypes, Color](./cleanArchitecture/colorModeling)
     - [6. Data Mapper](./cleanArchitecture/dataMapper)
-    - [7. The Rules Design Pattern](./cleanArchitecture/dataMapper)
+    - [7. The Rules Design Pattern](./cleanArchitecture/theRulesDesignPattern)
     - [8. Color Modeling](./cleanArchitecture/colorModeling)
 - ## Laravel
     - [Socialite](./laravel/socialite)
