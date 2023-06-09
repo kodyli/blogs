@@ -41,6 +41,7 @@ The company code includes all the features the componey required, the features c
 
 ![Bridge & Adapter](../img/cleanArchitecture/bridge_adapter_decorater.png)
 
+#### 4. how to handle two field have the same name when handle click on an error message?
 
 [1]: <https://refactoring.guru/design-patterns/bridge> "Bridge Design Pattern"
 [2]: <https://en.wikipedia.org/wiki/Dependency_injection> "Dependency Injection"
