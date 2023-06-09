@@ -138,3 +138,35 @@ public class RulesDiscountCalculator : IDiscountCalculator
     }
 }
 ~~~
+
+
+Pipeline Implementation Idea from Tomcat:
+
+[Pipeline.java](https://github.com/vonzhou/HowTomcatWorks/blob/master/src/main/java/org/apache/catalina/Pipeline.java), [Valve.java](https://github.com/vonzhou/HowTomcatWorks/blob/master/src/main/java/org/apache/catalina/Valve.java), [ValveContext.java](https://github.com/vonzhou/HowTomcatWorks/blob/master/src/main/java/org/apache/catalina/ValveContext.java)
+
+[SimplePipeline.java](https://github.com/vonzhou/HowTomcatWorks/blob/master/src/main/java/ex05/pyrmont/core/SimplePipeline.java)
+
+[Spring Security Architecture](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
+![SecurityFilterChain](https://docs.spring.io/spring-security/reference/_images/servlet/architecture/securityfilterchain.png)
+~~~java
+public interface Pipeline {
+    public Valve getBasic();
+    public void setBasic(Valve valve);
+                           
+    public void addValve(Valve valve);
+    public void removeValve(Valve valve);
+    public Valve[] getValves();
+                           
+    public void invoke(Request request, Response response);
+}
+~~~
+~~~java
+public interface Valve {
+    public void invoke(Request request, Response response, ValveContext valveContext);
+}
+~~~
+~~~java
+public interface ValveContext {
+    public void invokeNext(Request request, Response response);
+}
+~~~
