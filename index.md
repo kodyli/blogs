@@ -6,6 +6,8 @@
     - [4. New Design](./cleanArchitecture/design)
     - [5. Archetypes, Color](./cleanArchitecture/colorModeling)
     - [6. Data Mapper](./cleanArchitecture/dataMapper)
+    - [7. The Rules Design Pattern](./cleanArchitecture/dataMapper)
+    - [8. Color Modeling](./cleanArchitecture/colorModeling)
 - ## Laravel
     - [Socialite](./laravel/socialite)
     - [Redis](./laravel/redis)
@@ -15,7 +17,6 @@
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
-    - [Sliding Window](./algorithm/slidingWindow)  
-- ## ERP
-    - [Index](./erp/index)
+    - [Sliding Window](./algorithm/slidingWindow)
 - ## [Daily Challange](./algorithm/daily)
+- ## [Trade Like Casino](./tradeLikeCasino)
