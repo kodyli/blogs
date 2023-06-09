@@ -22,7 +22,9 @@ Persistence Layer:
 3. Manipulate entity state
 4. return output.
 
-When we need a new framework, we could only implements the same codes in the new framework, and reuse the kernel. Because the framework codes do not include business rules and the most works are transfering data format, run use case code from the kernel, so new team memenbers can still easily implement the code.
+When we need a new framework, we could only implements the same codes in the new framework, and reuse the kernel. Because the framework codes do not include business rules and the most works are transfering data format, run use case code from the kernel, so new team memenbers can still easily implement the code. And the new team memenbers can be contractors.
+
+The framework can also be replaced by a test framework, the test framework may read test cases from Excel which is easy for business men to write test case.
 
 ~~~md
 @startuml
