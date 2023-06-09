@@ -18,5 +18,5 @@
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
     - [Sliding Window](./algorithm/slidingWindow)
-- ## [Daily Challange](./algorithm/daily)
-- ## [Trade Like Casino](./tradeLikeCasino)
+- [Daily Challange](./algorithm/daily)
+- [Trade Like Casino](./tradeLikeCasino)
