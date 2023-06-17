@@ -1,12 +1,12 @@
 # Redux
 
 Problem: how two non parent-child components would communicate?
-![](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-01.svg)
+![https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-01.svg](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-01.svg)
 
 Resolution: Redux
-![](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-02.svg)
+![https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-02.svg](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-02.svg)
 
-![](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-03.svg)
+![https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-03.svg](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-03.svg)
 
 Simple version Redux:
 1. An `Action` defines what to do.
