@@ -4,7 +4,7 @@ Supporting code that has a lot of conditional logic and duplication can be quite
 
 [Michael Whelan: The Rules Design Pattern](https://www.michael-whelan.net/rules-design-pattern/)
 
-How to refactor code in Galaxy using this pattern?
+How to refactor code in Galaxy using this pattern? Validation maybe changed in this way.
 
 ### Before
 ~~~c#
