@@ -14,6 +14,8 @@
     - [Cache](./laravel/cache)
 - ## Java
     - [Concurrency](./java/concurrency)
+- ## JavaScript
+    - [Redux](./js/redux)
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
