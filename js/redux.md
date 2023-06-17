@@ -1,6 +1,6 @@
 # Redux
 
-Problem: how two non parent-child components would communicate?
+Problem: [how two non parent-child components would communicate](https://css-tricks.com/learning-react-redux)?
 ![https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-01.svg](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-01.svg)
 
 Resolution: Redux
