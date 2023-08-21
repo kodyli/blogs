@@ -1,6 +1,5 @@
 ### Understanding the JVM and JMM
 
-
 - Briefly introduce what the JVM (Java Virtual Machine) and JMM (Java Memory Model) are.
 
 ##### What is Java Virtual Machine(JVM)
@@ -55,14 +54,14 @@ public class App {
 1.1 Compile the java file using `javac`.
 
 1.1.1 Go to the folder.
-~~~
+~~~bash
 cd Documents/java 
 ~~~
 1.1.2 Check App.java file in the current folder.
 ~~~bash
 ls
 ~~~
-~~~
+~~~bash
 App.java
 ~~~
 1.1.3 Compile the App.java file.
@@ -73,8 +72,7 @@ javac App.java
 ~~~bash
 ls
 ~~~
-
-~~~
+~~~bash
 App.class	App.java
 ~~~
 
