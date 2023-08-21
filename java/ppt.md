@@ -1,8 +1,7 @@
-### Understanding the JVM and JMM
+# Understanding the JVM
 
-- Briefly introduce what the JVM (Java Virtual Machine) and JMM (Java Memory Model) are.
-
-##### What is Java Virtual Machine(JVM)
+<a name="section-1"></a>
+## What is Java Virtual Machine(JVM)
 
 The Java Virtual Machine(JVM) is an abstract computing machine. Like a real computing machine, it has [an instruction set](https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html) and manipulates various memory areas at run time. There are three notions of the JVM: specification, implementation, and instance.
 
@@ -17,7 +16,8 @@ The Java Virtual Machine knows nothing of the Java programming language, only of
 
 > Tips: [Groovy: A multi-faceted language for the Java platform.](http://www.groovy-lang.org/)
 
-##### Java Virtual Machine Architecture
+<a name="section-2"></a>
+## Java Virtual Machine Architecture
 
 ![JVM Architecture](https://ts1.cn.mm.bing.net/th/id/R-C.0d59ea4667ad34a14466b71903c26840?rik=uohVDS%2ffNR0T5w&pid=ImgRaw&r=0)
 
@@ -37,8 +37,8 @@ It is mainly responsible for three activities.
 
 ``Initialization``: In this phase, all static variables are assigned with their values defined in the code and static block(if any).
 
-
-##### Execution Example
+<a name="section-5"></a>
+## Execution Example
 Here we present an overview of the process from the viewpoint of the Java programming language.
 
 1. Get .class file.
