@@ -1,13 +1,13 @@
 # Understanding the JVM
 
 <a name="section-1"></a>
-## What is Java Virtual Machine(JVM)
+## 1 What is Java Virtual Machine(JVM)
 
 The Java Virtual Machine(JVM) is an abstract computing machine. Like a real computing machine, it has [an instruction set](https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html) and manipulates various memory areas at run time. There are three notions of the JVM: specification, implementation, and instance.
 
-1. ``A specification`` Where working of Java Virtual Machine is specified. [Java Virtual Machine Specifications](https://docs.oracle.com/javase/specs/index.html)
-2. ``An implementation`` Its implementation has been provided by Oracle and other companies.
-3. ``Runtime Instance`` Whenever you write java command to run the java class, an instance of JVM is created.
+a. ``A specification`` Where working of Java Virtual Machine is specified. [Java Virtual Machine Specifications](https://docs.oracle.com/javase/specs/index.html)
+b. ``An implementation`` Its implementation has been provided by Oracle and other companies.
+c. ``Runtime Instance`` Whenever you write java command to run the java class, an instance of JVM is created.
 
 The Java Virtual Machine is the cornerstone of the Java platform. It is the component of the technology responsible for its hardware- and operating system independence, the small size of its compiled code, and its ability to protect users from malicious programs.
 
@@ -17,19 +17,35 @@ The Java Virtual Machine knows nothing of the Java programming language, only of
 > Tips: [Groovy: A multi-faceted language for the Java platform.](http://www.groovy-lang.org/)
 
 <a name="section-2"></a>
-## Java Virtual Machine Architecture
+## 2 Java Virtual Machine Architecture
 
 ![JVM Architecture](https://ts1.cn.mm.bing.net/th/id/R-C.0d59ea4667ad34a14466b71903c26840?rik=uohVDS%2ffNR0T5w&pid=ImgRaw&r=0)
 
 It contains class loader, run time data area, execution engine, etc.
 
-1. Class loader
+### 2.1 Class loader
 
-It is mainly responsible for three activities. 
+It is mainly responsible for three activities: `Loading`, `Linking`, `Initialization`.
 
-* Loading
-* Linking
-* Initialization
+#### 2.1.1 Loading
+The Class loader reads the “.class” file, generate the corresponding binary data and save it in the method area. There are three built-in classloaders in Java.
+
+a. `Bootstrap Class Loader`: It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes, java.io package classes, java.sql package classes etc.
+
+b. `Extension Class Loader`: It loades the jar files located inside $JAVA_HOME/jre/lib/ext directory.
+
+c. `Application Class Loader`: It loads the classfiles from classpath. By default, classpath is set to current directory.
+
+The Java platform uses a delegation model for loading classes. The basic idea is that every class loader has a "parent" class loader. When loading a class, a class loader first "delegates" the search for the class to its parent class loader before attempting to find the class itself.
+![The Class Loader Hierarchy](https://media.geeksforgeeks.org/wp-content/uploads/jvmclassloader.jpg)
+
+>Read More:
+
+>[Class Loaders in Java](https://www.baeldung.com/java-classloaders)
+
+#### 2.1.2 Linking
+
+#### 2.1.3 Initialization
 
 ``Loading``: The Class loader reads the “.class” file, generate the corresponding binary data and save it in the method area.
 
@@ -94,11 +110,7 @@ public class App {
        0: getstatic     #7                  // Field java/lang/System.out:Ljava/io/PrintStream;
        3: ldc           #13                 // String Hello World!
        5: invokevirtual #15                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
-       8: getstatic     #7                  // Field java/lang/System.out:Ljava/io/PrintStream;
-      11: ldc           #21                 // class App
-      13: invokevirtual #23                 // Method java/lang/Class.getClassLoader:()Ljava/lang/ClassLoader;
-      16: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-      19: return
+       8: return
 }
 ```
 
