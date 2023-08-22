@@ -27,9 +27,9 @@ The Java Virtual Machine defines various run-time data areas that are used durin
 
 ![Runtime Data Area](https://ts1.cn.mm.bing.net/th/id/R-C.0ec9579d7ece952947a0db74f6470d57?rik=Cdb4%2f1U05fyVQQ&riu=http%3a%2f%2fwww.programcreek.com%2fwp-content%2fuploads%2f2013%2f04%2fJVM-runtime-data-area.jpg&ehk=UOaS7u5PslCIm%2fjW%2fkMaEnoQqpftuqVU7qwlkI5ztJ0%3d&risl=&pid=ImgRaw&r=0)
 
-#### 2.1.1 Method Area - Class level data
+#### 2.1.1 Method Area
 It stores per-class structures such as the run-time constant pool, field and method data, and the code for methods and constructors, including [the special methods](https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-2.html#jvms-2.9) used in class and interface initialization and in instance initialization.
-#### 2.1.2 Heap - Object level data
+#### 2.1.2 Heap
 The heap is the run-time data area from which memory for all class instances and arrays is allocated.
 
 Heap storage for objects is reclaimed by an automatic storage management system (known as a garbage collector); objects are never explicitly deallocated. 
@@ -37,7 +37,7 @@ Heap storage for objects is reclaimed by an automatic storage management system 
 
 #### 2.1.3 JVM Stack 
 A Java Virtual Machine stack stores [frames](https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-2.html#jvms-2.6).
-##### 2.1.3.1 Frames - Method level data
+##### 2.1.3.1 Frames
 A new frame is created each time a method is invoked. A frame is destroyed when its method invocation completes, whether that completion is normal or abrupt (it throws an uncaught exception). Each frame has its own array of local variables, its own operand stack, and a reference to the runtime constant pool of the class of the current method.
 
 #### 2.1.4 Program Counter Regisger
