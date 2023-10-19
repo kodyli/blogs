@@ -2,7 +2,7 @@
 - [1. Introduction](#section-1)
 - [2. The Scenario](#section-2)
 - [3. Challenges and Consequences](#section-3)
-- [4. Strategies to Ensure Consistent Employee Data](#section-4)
+- [4. Strategies to Ensure Consistent Data](#section-4)
 - [5. Code](#section-5)
 - [6. Read More](#section-6)
 
@@ -20,7 +20,7 @@ When the delayed response (A) arrives out of order, the web page risks displayin
 ![Challenges and Consequences of Out-of-Order Responses](../img/outOfOrderResponse/issue.png)
 
 <a name="section-4"></a>
-## 4. Strategies to Ensure Consistent Employee Data:
+## 4. Strategies to Ensure Consistent Data:
 Use a `fencing tokens`. The idea come from the distributed lock.
 ![Making the lock safe with fencing](https://martin.kleppmann.com/2016/02/fencing-tokens.png)
 Let's assume that every time before the request is sent, it will get a `fencing token`, which is a number that increases every time a request is send. We can then require that every time a request need to compare the fencing token before processing the response.
