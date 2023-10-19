@@ -21,7 +21,7 @@ When the delayed response (A) arrives out of order, the web page risks displayin
 
 <a name="section-4"></a>
 ## 4. Strategies to Ensure Consistent Data:
-Use a `fencing tokens`. The idea come from the distributed lock.
+Use a `fencing tokens`. The idea comes from the distributed lock.
 ![Making the lock safe with fencing](https://martin.kleppmann.com/2016/02/fencing-tokens.png)
 Let's assume that every time before the request is sent, it will get a `fencing token`, which is a number that increases every time a request is send. We can then require that every time a request need to compare the fencing token before processing the response.
 
@@ -183,7 +183,7 @@ function searchPositions() {
 > It can also integrate with Ajax injector of frameworks and libraries, like angularJS, angular, and Jquery Ajax, so we can handle all requestes together instead of one by one.
 
 ### 5.2 Stop loading indicator
-Galaxy Indicator:
+#### 5.2.1 Galaxy Indicator:
 ~~~typescript
 class LoadingIndicator {
   constructor() {
@@ -278,7 +278,7 @@ function positionHttp(){
 }
 ~~~
 
-New Design:
+#### 5.2.2 New Design:
 ~~~typescript
 class LoadingIndicator {
   private show:LastWin;
