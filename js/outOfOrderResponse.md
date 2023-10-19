@@ -1,4 +1,10 @@
 # Showing the Right Data with Out-of-Order Responses in Javascript
+- [1. Introduction](#section-1)
+- [2. The Scenario](#section-2)
+- [3. Challenges and Consequences](#section-3)
+- [4. Strategies to Ensure Consistent Employee Data](#section-4)
+- [5. Code](#section-5)
+- [6. Read More](#section-6)
 
 <a name="section-1"></a>
 ## 1. Introduction:
@@ -115,7 +121,7 @@ function searchPositions() {
 It can also integrate with Ajax injector of frameworks and libraries, like angularJS, angular, and Jquery Ajax, so we can handle all requestes together instead of one by one.
 
 <a name="section-6"></a>
-Read More:
+## 6. Read More:
 
 [Showing the Right Data with Out-of-Order Responses in Javascript](https://www.tejusparikh.com/2017/showing-right-data-out-of-order-responses-javascript.html)
 
