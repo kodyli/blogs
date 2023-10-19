@@ -15,8 +15,10 @@
 - ## Java
     - [Concurrency](./java/concurrency)
     - [JVM](./java/ppt)
+    - [Ring Buffer](./java/ringbuffer)
 - ## JavaScript
     - [Redux](./js/redux)
+    - [Showing the Right Data with Out-of-Order Responses in Javascript](./js/outOfOrderResponse)
 - ## Algorithm
     - [Overview](./algorithm/overview)
     - [Binary Search](./algorithm/binarySearch)
