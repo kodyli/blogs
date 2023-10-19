@@ -21,7 +21,7 @@ When the delayed response (A) arrives out of order, the web page risks displayin
 
 <a name="section-4"></a>
 ## 4. Strategies to Ensure Consistent Employee Data:
-Use a fencing tokens. The idea come from the distributed lock.
+Use a `fencing tokens`. The idea come from the distributed lock.
 ![Making the lock safe with fencing](https://martin.kleppmann.com/2016/02/fencing-tokens.png)
 Let's assume that every time before the request is sent, it will get a `fencing token`, which is a number that increases every time a request is send. We can then require that every time a request need to compare the fencing token before processing the response.
 
@@ -31,72 +31,134 @@ Let's assume that every time before the request is sent, it will get a `fencing 
 ## 5. Code
 
 ~~~typescript
-class FencingTokens{
-    private DEFAULT_URL: string = "/";
-    private START_TOKEN:number = 1;
-    private tokens = new Map<string, number>();
-                    
-    constructor(defaultUrl: string = ""){
-        this.DEFAULT_URL = defaultUrl||this.DEFAULT_URL;
-        this.tokens.set(this.DEFAULT_URL, this.START_TOKEN);
-    }
-    //Default Url
-    get():number{
-        return this.get(this.DEFAULT_URL);
-    }
-    
-    next():number{
-        return this.next(this.DEFAULT_URL);
-    }
-    rejected(token:number):boolean{
-        return this.canUpdate(this.DEFAULT_URL, token);
-    }
-    //Any Url              
-    get(url:string):number{
-        return this.tokens.get(url)||this.START_TOKEN;
-    }               
-    next(url:string):number{
-        let oldToken = this.get(url),
-            newToken = oldToken++;
-        this.tokens.set(url, newToken);
-        return newToken;
-    }
-    rejected(url:string, token:number):boolean{
-        return this.get(url) !== token;
-    }
+/**
+ * Represents a class for managing tokens by name.
+ */
+class LastWin {
+  /**
+   * The default name for tokens.
+   * @type {string}
+   * @private
+   */
+  private DEFAULT_NAME: string;
+
+  /**
+   * The starting token value.
+   * @type {number}
+   * @private
+   */
+  private START_TOKEN: number = 1;
+
+  /**
+   * A map to store tokens by name.
+   * @type {Map<string, number>}
+   * @private
+   */
+  private tokens: Map<string, number> = new Map<string, number>();
+
+  /**
+   * Creates an instance of LastWin.
+   * @param {string} defaultName - The default name for tokens.
+   */
+  constructor(defaultName: string) {
+    this.DEFAULT_NAME = defaultName;
+    this.tokens.set(this.DEFAULT_NAME, this.START_TOKEN);
+  }
+
+  /**
+   * Get the token by name for the default name.
+   * @returns {number} The token value.
+   */
+  get(): number {
+    return this.get(this.DEFAULT_NAME);
+  }
+
+  /**
+   * Get the next token by name for the default name.
+   * @returns {number} The next token value.
+   */
+  next(): number {
+    return this.next(this.DEFAULT_NAME);
+  }
+
+  /**
+   * Check if the given token matches the token by name for the default name.
+   * @param {number} token - The token to compare.
+   * @returns {boolean} `true` if the tokens match, `false` otherwise.
+   */
+  win(token: number): boolean {
+    return this.win(this.DEFAULT_NAME, token);
+  }
+
+  /**
+   * Get the token by name.
+   * @param {string} name - The name for which to get the token.
+   * @returns {number} The token value for the specified name.
+   */
+  get(name: string): number {
+    return this.tokens.get(name) || this.START_TOKEN;
+  }
+
+  /**
+   * Get the next token by name.
+   * @param {string} name - The name for which to get the next token.
+   * @returns {number} The next token value for the specified name.
+   */
+  next(name: string): number {
+    const oldToken = this.get(name);
+    const newToken = oldToken + 1;
+    this.tokens.set(name, newToken);
+    return newToken;
+  }
+
+  /**
+   * Check if the given token matches the token by name.
+   * @param {string} name - The name to check.
+   * @param {number} token - The token to compare.
+   * @returns {boolean} `true` if the tokens match, `false` otherwise.
+   */
+  win(name: string, token: number): boolean {
+    return this.get(name) === token;
+  }
 }
+}
+
 ~~~
+### 5.1 Display response data on a page
 ~~~html
 <button onclick="searchEmployees()">Search</button>
 ~~~
+
+#### 5.1.1 Single name
 ~~~js
 const employeeUrl = "/employees";
-const fencingTokens = new FencingTokens(employeeUrl);
+const lastWin = new LastWin(employeeUrl);
 
 function searchEmployees() {
-    let fencingToken = fencingTokens.next();
+    let fencingToken = lastWin.next();
     $.ajax({
         url: employeeUrl,
         data: {firstName:"", lastName:""},
         success: function(res){
-            if(!fencingTokens.rejected(fencingToken)){
+            if(lastWin.win(fencingToken)){
                 //display data to web page.
             }
         }
     });
 }
 ~~~
+#### 5.1.2 Multiple names
 ~~~js
-const fencingTokens = new FencingTokens();
+const lastWin = new LastWin();
 
 function searchEmployees() {
     const url = "/employees";
-    let fencingToken = fencingTokens.next(url);
+    let fencingToken = lastWin.next(url);
     $.ajax({
         url: url,
         data: {firstName:"", lastName:""},
         success: function(res){
-            if(!fencingTokens.rejected(url, fencingToken)){
+            if(lastWin.win(url, fencingToken)){
                 //display data to web page.
             }
         }
@@ -105,12 +167,12 @@ function searchEmployees() {
 
 function searchPositions() {
     const url = "/positions";
-    let fencingToken = fencingTokens.next(url);
+    let fencingToken = lastWin.next(url);
     $.ajax({
         url: url,
         data: {firstName:"", lastName:""},
         success: function(res){
-            if(!fencingTokens.rejected(url, fencingToken)){
+            if(lastWin.win(url, fencingToken)){
                 //display data to web page.
             }
         }
@@ -118,7 +180,180 @@ function searchPositions() {
 }
 ~~~
 
-It can also integrate with Ajax injector of frameworks and libraries, like angularJS, angular, and Jquery Ajax, so we can handle all requestes together instead of one by one.
+> It can also integrate with Ajax injector of frameworks and libraries, like angularJS, angular, and Jquery Ajax, so we can handle all requestes together instead of one by one.
+
+### 5.2 Stop loading indicator
+Galaxy Indicator:
+~~~typescript
+class LoadingIndicator {
+  constructor() {
+    this.overlay = null;
+    this.indicator = null;
+
+    this.createStyle();
+    this.createElements();
+  }
+
+
+  loading() {
+    if (this.overlay) {
+      document.body.appendChild(this.overlay);
+    }
+  }
+
+  idle() {
+    if (this.overlay && this.overlay.parentNode) {
+      this.overlay.parentNode.removeChild(this.overlay);
+    }
+  }
+                        
+  createStyle() {
+    // Define CSS styles for the overlay and indicator
+    this.styles = {
+      overlay: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "rgba(0, 0, 0, 0.5)",
+        zIndex: 9999,
+        display: "none",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+      },
+      indicator: {
+        width: "100px",
+        height: "100px",
+        border: "16px solid #f3f3f3",
+        borderTop: "16px solid #3498db",
+        borderRadius: "50%",
+        animation: "spin 2s linear infinite",
+      },
+    };
+  }
+
+  createElements() {
+    // Create the overlay element
+    this.overlay = document.createElement("div");
+    Object.assign(this.overlay.style, this.styles.overlay);
+    
+    // Create the loading indicator element
+    this.indicator = document.createElement("div");
+    Object.assign(this.indicator.style, this.styles.indicator);
+    
+    // Add the indicator to the overlay
+    this.overlay.appendChild(this.indicator);
+  }
+
+}
+
+~~~
+Problems:
+
+1. It may pop up two indicators one after anoter.
+
+2. It may stop the indicator before the http request, that takes a longer time, finished.
+
+~~~typescript
+// Usage:
+const loadingIndicator = new LoadingIndicator();//AngularJS service
+
+document.getElementById("findBtn")?.addEventListener("click", () => {
+  employeeHttp();
+  positionHttp()
+});
+
+function employeeHttp(){
+    loadingIndicator.busy();
+    //Ajax call
+    loadingIndicator.idle();
+}
+
+function positionHttp(){
+    loadingIndicator.busy();
+    //Ajax call
+    loadingIndicator.idle();
+}
+~~~
+
+New Design:
+~~~typescript
+class LoadingIndicator {
+  private show:LastWin;
+  private hide:LastWin;
+                        
+  constructor() {
+    this.overlay = null;
+    this.indicator = null;
+                 
+    this.show = new LastWin("show");
+    this.hide = new LastWin("hide");
+
+    this.createStyle();
+    this.createElements();
+  }
+
+  loading() {
+    if(this.show.get() === this.hide.get()){
+      document.body.appendChild(this.overlay); 
+    }
+    this.show.next();
+  }
+
+  idle() {
+    if(this.show.get() !== this.hide.get()){
+       this.hide.next();
+       if(this.show.get() === this.hide.get()){
+         this.overlay.parentNode.removeChild(this.overlay);
+       }
+     }
+  }
+
+  private createStyle() {
+    // Define CSS styles for the overlay and indicator
+    this.styles = {
+      overlay: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "rgba(0, 0, 0, 0.5)",
+        zIndex: 9999,
+        display: "none",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+      },
+      indicator: {
+        width: "100px",
+        height: "100px",
+        border: "16px solid #f3f3f3",
+        borderTop: "16px solid #3498db",
+        borderRadius: "50%",
+        animation: "spin 2s linear infinite",
+      },
+    };
+  }
+
+  private createElements() {
+    // Create the overlay element
+    this.overlay = document.createElement("div");
+    Object.assign(this.overlay.style, this.styles.overlay);
+    
+    // Create the loading indicator element
+    this.indicator = document.createElement("div");
+    Object.assign(this.indicator.style, this.styles.indicator);
+    
+    // Add the indicator to the overlay
+    this.overlay.appendChild(this.indicator);
+  }
+
+}
+
+~~~
 
 <a name="section-6"></a>
 ## 6. Read More:
