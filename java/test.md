@@ -1,6 +1,7 @@
 # Unit Test
 - [1. JUnit](#section-1)
 - [2. Mockito](#section-2)
+
 Unit testing is a fundamental practice in software development that ensures individual components of a codebase function as expected. JUnit, a widely adopted **testing framework** for Java, provides a robust and standardized approach to writing and executing unit tests. When combined with Mockito, a powerful **mocking framework**, developers can create isolated test environments, simulate dependencies, and verify interactions between components.
 
 <a name="section-1"></a>
@@ -14,6 +15,7 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
    - `@After`: Executed after each test method.
    - `@BeforeClass`: Executed once before any test methods in the class.
    - `@AfterClass`: Executed once after all test methods in the class.
+   
 ### Assertions:
 2. **Assertions:**
    - `assertTrue(condition)`: Checks if the condition is true.
@@ -24,37 +26,45 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
    - `assertNotNull(object)`: Checks if the object is not null.
    - `assertSame(expected, actual)`: Checks if the objects refer to the same instance.
    - `assertNotSame(unexpected, actual)`: Checks if the objects do not refer to the same instance.
+   
 ### Exception Handling:
 3. **Exception Handling:**
    - `@Test(expected = Exception.class)`: Expects a specific exception in a test.
    - `assertThrows(Exception.class, () -> methodCall)`: Asserts that a specific exception is thrown.
    - `assertDoesNotThrow(() -> methodCall)`: Asserts that no exception is thrown.
+   
 ### Parameterized Tests:
 4. **Parameterized Tests:**
    - `@RunWith(Parameterized.class)`: Enables parameterized tests.
    - `@Parameters`: Provides data for parameterized tests.
    - `@Parameter(index)` and `@Parameterized.Parameters(name)`: Define parameters and their names.
    - `ParameterizedTest`: Annotation for parameterized tests.
+   
 ### Test Suites:
 5. **Test Suites:**
    - `@RunWith(Suite.class)`: Runs multiple test classes.
    - `@Suite.SuiteClasses({TestClass1.class, TestClass2.class})`: Lists the test classes in the suite.
+   
 ### Assume:
 6. **Assume:**
    - `assumeTrue(condition)`: Skips a test if the condition is false.
    - `assumeFalse(condition)`: Skips a test if the condition is true.
+
 ### Timeout and Performance Testing:
 7. **Timeout and Performance Testing:**
    - `@Test(timeout = milliseconds)`: Sets a timeout for a test.
    - `@RepeatedTest(n)`: Repeats a test a specified number of times.
    - `@Disabled`: Disables a test.
+
 ### Rules:
 8. **Rules:**
    - `@Rule`: Annotation for test rules.
    - `TestRule` interface and built-in rules like `TemporaryFolder` and `ExpectedException`.
+
 ### Mocking:
 9. **Mocking:**
    - Integration with mocking frameworks like **Mockito** for more advanced mocking capabilities.
+
 #### Miscellaneous:
 10. **Miscellaneous:**
     - `@DisplayName`: Provides a custom name for a test method.
@@ -97,15 +107,7 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
    - `spy(object)`: Create a spy (partial mock) of a real object.
 7. **Resetting Mocks:**
    - `reset(mock)`: Reset the mock, clearing all stubbing and recorded behavior.
-### Annotations:
-1. **`@Mock`**
-   - **Purpose:** Indicate a field to be mocked.
-2. **`@Spy`**
-   - **Purpose:** Indicate a field to be spied (partial mock).
-3. **`@Captor`**
-   - **Purpose:** Indicate a field to capture method arguments.
-4. **`@InjectMocks`**
-   - **Purpose:** Automatically inject mock or spy objects into the target object being tested.
+   
 ### Additional:
 8. **`ArgumentCaptor.forClass(Class<T> argumentClass)`**
    - **Purpose:** Capture arguments passed to a method.
@@ -115,3 +117,13 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
     - **`verify(mock, timeout(milliseconds))`**: Verify that a method was called within a specified time.
 11. **Answering:**
     - **`Answer<T>`**: Allow custom behavior when a mocked method is called.
+
+### Annotations:
+12. **`@Mock`**
+   - **Purpose:** Indicate a field to be mocked.
+13. **`@Spy`**
+   - **Purpose:** Indicate a field to be spied (partial mock).
+14. **`@Captor`**
+   - **Purpose:** Indicate a field to capture method arguments.
+15. **`@InjectMocks`**
+   - **Purpose:** Automatically inject mock or spy objects into the target object being tested.
