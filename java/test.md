@@ -1,6 +1,7 @@
 # Unit Test
 - [1. JUnit](#section-1)
 - [2. Mockito](#section-2)
+- [3. BDD](#section-3)
 
 Unit testing is a fundamental practice in software development that ensures individual components of a codebase function as expected. JUnit, a widely adopted **testing framework** for Java, provides a robust and standardized approach to writing and executing unit tests. When combined with Mockito, a powerful **mocking framework**, developers can create isolated test environments, simulate dependencies, and verify interactions between components.
 
@@ -140,3 +141,34 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
    - **Purpose:** Indicate a field to capture method arguments.
 15. **`@InjectMocks`**
    - **Purpose:** Automatically inject mock or spy objects into the target object being tested.
+
+<a name="section-3"></a>
+## [BDD](https://www.baeldung.com/bdd-mockito)
+Mockito itself is not a BDD framework, but you can use Mockito in combination with a BDD-style testing framework, such as Cucumber or JBehave, to write BDD-style tests. When using Mockito in a BDD context, you often follow a **Given-When-Then** structure similar to BDD scenarios.
+
+Here are some common Mockito methods and annotations that can be used in a BDD-style context:
+
+1. **Annotations for Mocks:**
+   - `@Mock`: Used to create a mock object.
+   - `@Spy`: Used to create a spy object, allowing you to partially mock an object while maintaining the real behavior for certain methods.
+
+2. **Mockito Methods for Stubbing:**
+   - `when(mock.methodCall()).thenReturn(value)`: Stubbing method calls to return a specific value.
+   - `doReturn(value).when(mock).methodCall()`: Alternative syntax for stubbing.
+   - `when(mock.methodCall()).thenThrow(exception)`: Stubbing method calls to throw an exception.
+
+3. **Verification in BDD Style:**
+   - `verify(mock).methodCall()`: Verifying that a method was called on a mock.
+   - `verify(mock, times(n)).methodCall()`: Verifying the number of times a method was called.
+   - `verify(mock, atLeastOnce()).methodCall()`: Verifying that a method was called at least once.
+   - `verify(mock, never()).methodCall()`: Verifying that a method was never called.
+
+4. **Argument Matchers:**
+   - `Mockito.any(Type.class)`: Matches any argument of the specified type.
+   - `Mockito.eq(value)`: Matches the exact argument value.
+   - `Mockito.argThat(Matcher)`: Matches arguments based on a custom matcher.
+
+5. **BDD Style Verification:**
+   - `BDDMockito.then(mock).should().methodCall()`: BDD-style verification of method calls.
+   - `BDDMockito.then(mock).should(times(n)).methodCall()`: BDD-style verification with a specified number of times.
+
