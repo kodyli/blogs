@@ -16,7 +16,7 @@
     - [Concurrency](./java/concurrency)
     - [JVM](./java/ppt)
     - [Ring Buffer](./java/ringbuffer)
-    - [Mockito](./java/mockito)
+    - [Unit Test](./java/test)
 - ## JavaScript
     - [Redux](./js/redux)
     - [Showing the Right Data with Out-of-Order Responses in Javascript](./js/outOfOrderResponse)
