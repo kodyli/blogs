@@ -1,9 +1,13 @@
-# Unit testing
-Unit testing is a fundamental practice in software development that ensures individual components of a codebase function as expected. JUnit, a widely adopted **testing framework** for Java, provides a robust and standardized approach to writing and executing unit tests. When combined with Mockito, a powerful **mocking framework**, developers can create isolated test environments, simulate dependencies, and verify interactions between components.
-# JUnit
-Certainly! Here's a cheat sheet for JUnit, a popular testing framework for Java:
+# Unit Test
+- [1. JUnit](#section-1)
+- [2. Mockito](#section-2)
 
-#### Basics:
+Unit testing is a fundamental practice in software development that ensures individual components of a codebase function as expected. JUnit, a widely adopted **testing framework** for Java, provides a robust and standardized approach to writing and executing unit tests. When combined with Mockito, a powerful **mocking framework**, developers can create isolated test environments, simulate dependencies, and verify interactions between components.
+
+<a name="section-1"></a>
+## JUnit
+JUnit is a widely used **testing framework** for Java that plays a crucial role in ensuring the reliability and correctness of Java applications. 
+### Basics:
 
 1. **Annotations:**
    - `@Test`: Denotes a test method.
@@ -12,7 +16,7 @@ Certainly! Here's a cheat sheet for JUnit, a popular testing framework for Java:
    - `@BeforeClass`: Executed once before any test methods in the class.
    - `@AfterClass`: Executed once after all test methods in the class.
 
-#### Assertions:
+### Assertions:
 
 2. **Assertions:**
    - `assertTrue(condition)`: Checks if the condition is true.
@@ -24,14 +28,14 @@ Certainly! Here's a cheat sheet for JUnit, a popular testing framework for Java:
    - `assertSame(expected, actual)`: Checks if the objects refer to the same instance.
    - `assertNotSame(unexpected, actual)`: Checks if the objects do not refer to the same instance.
 
-#### Exception Handling:
+### Exception Handling:
 
 3. **Exception Handling:**
    - `@Test(expected = Exception.class)`: Expects a specific exception in a test.
    - `assertThrows(Exception.class, () -> methodCall)`: Asserts that a specific exception is thrown.
    - `assertDoesNotThrow(() -> methodCall)`: Asserts that no exception is thrown.
 
-#### Parameterized Tests:
+### Parameterized Tests:
 
 4. **Parameterized Tests:**
    - `@RunWith(Parameterized.class)`: Enables parameterized tests.
@@ -39,32 +43,32 @@ Certainly! Here's a cheat sheet for JUnit, a popular testing framework for Java:
    - `@Parameter(index)` and `@Parameterized.Parameters(name)`: Define parameters and their names.
    - `ParameterizedTest`: Annotation for parameterized tests.
 
-#### Test Suites:
+### Test Suites:
 
 5. **Test Suites:**
    - `@RunWith(Suite.class)`: Runs multiple test classes.
    - `@Suite.SuiteClasses({TestClass1.class, TestClass2.class})`: Lists the test classes in the suite.
 
-#### Assume:
+### Assume:
 
 6. **Assume:**
    - `assumeTrue(condition)`: Skips a test if the condition is false.
    - `assumeFalse(condition)`: Skips a test if the condition is true.
 
-#### Timeout and Performance Testing:
+### Timeout and Performance Testing:
 
 7. **Timeout and Performance Testing:**
    - `@Test(timeout = milliseconds)`: Sets a timeout for a test.
    - `@RepeatedTest(n)`: Repeats a test a specified number of times.
    - `@Disabled`: Disables a test.
 
-#### Rules:
+### Rules:
 
 8. **Rules:**
    - `@Rule`: Annotation for test rules.
    - `TestRule` interface and built-in rules like `TemporaryFolder` and `ExpectedException`.
 
-#### Mocking:
+### Mocking:
 
 9. **Mocking:**
    - Integration with mocking frameworks like Mockito for more advanced mocking capabilities.
@@ -76,15 +80,11 @@ Certainly! Here's a cheat sheet for JUnit, a popular testing framework for Java:
     - `@Tag`: Adds tags to categorize tests.
     - `@Disabled`: Disables a test.
 
-Remember to include JUnit dependencies in your project to use these features. The version of annotations may vary depending on the JUnit version you're using.
-
-Always refer to the [JUnit documentation](https://junit.org/junit5/docs/current/user-guide/) for detailed information and updates.
-
-
-# Mockito
+<a name="section-2"></a>
+## Mockito
 Mockito is a popular Java **mocking framework** that provides methods for creating mock objects and behavior verification in tests. Here's a list of some commonly used methods in Mockito:
 
-## Methods:
+### Methods:
 
 1. **Mock Creation:**
    - `mock(Class<T> classToMock)`: Create a mock object for the specified class.
@@ -124,7 +124,7 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
 7. **Resetting Mocks:**
    - `reset(mock)`: Reset the mock, clearing all stubbing and recorded behavior.
 
-## Annotations:
+### Annotations:
 
 1. **`@Mock`**
    - **Purpose:** Indicate a field to be mocked.
@@ -138,7 +138,7 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
 4. **`@InjectMocks`**
    - **Purpose:** Automatically inject mock or spy objects into the target object being tested.
 
-## Additional:
+### Additional:
 
 8. **`ArgumentCaptor.forClass(Class<T> argumentClass)`**
    - **Purpose:** Capture arguments passed to a method.
