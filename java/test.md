@@ -9,6 +9,7 @@ Unit testing is a fundamental practice in software development that ensures indi
 JUnit is a widely used **testing framework** for Java that plays a crucial role in ensuring the reliability and correctness of Java applications. 
 
 ### Basics:
+
 1. **Annotations:**
    - `@Test`: Denotes a test method.
    - `@Before`: Executed before each test method.
@@ -17,6 +18,7 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
    - `@AfterClass`: Executed once after all test methods in the class.
    
 ### Assertions:
+
 2. **Assertions:**
    - `assertTrue(condition)`: Checks if the condition is true.
    - `assertFalse(condition)`: Checks if the condition is false.
@@ -28,12 +30,14 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
    - `assertNotSame(unexpected, actual)`: Checks if the objects do not refer to the same instance.
    
 ### Exception Handling:
+
 3. **Exception Handling:**
    - `@Test(expected = Exception.class)`: Expects a specific exception in a test.
    - `assertThrows(Exception.class, () -> methodCall)`: Asserts that a specific exception is thrown.
    - `assertDoesNotThrow(() -> methodCall)`: Asserts that no exception is thrown.
    
 ### Parameterized Tests:
+
 4. **Parameterized Tests:**
    - `@RunWith(Parameterized.class)`: Enables parameterized tests.
    - `@Parameters`: Provides data for parameterized tests.
@@ -41,31 +45,37 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
    - `ParameterizedTest`: Annotation for parameterized tests.
    
 ### Test Suites:
+
 5. **Test Suites:**
    - `@RunWith(Suite.class)`: Runs multiple test classes.
    - `@Suite.SuiteClasses({TestClass1.class, TestClass2.class})`: Lists the test classes in the suite.
    
 ### Assume:
+
 6. **Assume:**
    - `assumeTrue(condition)`: Skips a test if the condition is false.
    - `assumeFalse(condition)`: Skips a test if the condition is true.
 
 ### Timeout and Performance Testing:
+
 7. **Timeout and Performance Testing:**
    - `@Test(timeout = milliseconds)`: Sets a timeout for a test.
    - `@RepeatedTest(n)`: Repeats a test a specified number of times.
    - `@Disabled`: Disables a test.
 
 ### Rules:
+
 8. **Rules:**
    - `@Rule`: Annotation for test rules.
    - `TestRule` interface and built-in rules like `TemporaryFolder` and `ExpectedException`.
 
 ### Mocking:
+
 9. **Mocking:**
    - Integration with mocking frameworks like **Mockito** for more advanced mocking capabilities.
 
 #### Miscellaneous:
+
 10. **Miscellaneous:**
     - `@DisplayName`: Provides a custom name for a test method.
     - `@Tag`: Adds tags to categorize tests.
@@ -76,6 +86,7 @@ JUnit is a widely used **testing framework** for Java that plays a crucial role 
 Mockito is a popular Java **mocking framework** that provides methods for creating mock objects and behavior verification in tests. Here's a list of some commonly used methods in Mockito:
 
 ### Methods:
+
 1. **Mock Creation:**
    - `mock(Class<T> classToMock)`: Create a mock object for the specified class.
    - `mock(Class<T> classToMock, String name)`: Create a named mock object.
@@ -109,6 +120,7 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
    - `reset(mock)`: Reset the mock, clearing all stubbing and recorded behavior.
    
 ### Additional:
+
 8. **`ArgumentCaptor.forClass(Class<T> argumentClass)`**
    - **Purpose:** Capture arguments passed to a method.
 9. **`InOrder inOrder(firstMock, secondMock)`**
@@ -119,6 +131,7 @@ Mockito is a popular Java **mocking framework** that provides methods for creati
     - **`Answer<T>`**: Allow custom behavior when a mocked method is called.
 
 ### Annotations:
+
 12. **`@Mock`**
    - **Purpose:** Indicate a field to be mocked.
 13. **`@Spy`**
