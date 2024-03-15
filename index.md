@@ -18,7 +18,7 @@
     - [Ring Buffer](./java/ringbuffer)
     - [Unit Test](./java/test)
 - ## AWS
-    - [AWS](./aws/kafka_producer)
+    - [AWS](./aws/aws)
 - ## JavaScript
     - [Redux](./js/redux)
     - [Showing the Right Data with Out-of-Order Responses in Javascript](./js/outOfOrderResponse)
