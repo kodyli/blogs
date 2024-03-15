@@ -151,8 +151,9 @@ class CircularBuffer<T> {
 ~~~
 
 2. ReentrantLock
+
 ~~~java
-import java.util.concurrent.locks.*;
+//import java.util.concurrent.locks.*;
 
 class CircularBuffer<T> {
     private final int capacity;
