@@ -205,8 +205,8 @@ class CircularBuffer<T> {
 ~~~
 
 3. Lock-free CircularBuffer
-~~~java
 
+~~~java
 import java.util.concurrent.atomic.AtomicIntegerArray;
 
 class CircularBuffer<T> {
