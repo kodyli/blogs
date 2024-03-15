@@ -15,7 +15,7 @@
 - ## Java
     - [Concurrency](./java/concurrency)
     - [JVM](./java/ppt)
-    - [Ring Buffer](./java/ringbuffer)
+    - [Ring Buffer](./java/ringBuffer)
     - [Unit Test](./java/test)
 - ## AWS
     - [AWS](./aws/aws)
