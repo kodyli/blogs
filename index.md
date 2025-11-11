@@ -24,6 +24,7 @@
 - ## JavaScript
   - [Redux](./js/redux)
   - [Showing the Right Data with Out-of-Order Responses in Javascript](./js/outOfOrderResponse)
+  - [Environment-Specific Module Loading in React with Vite: The Strict Mode-Aliasing Pattern](./js/environmentSpecificModuleLoadingInFrontend)
 - ## Algorithm
   - [Overview](./algorithm/overview)
   - [Binary Search](./algorithm/binarySearch)
