@@ -94,140 +94,89 @@ Vite allows **dynamic aliasing** in its configuration, letting you point a gener
 ```js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 import fs from 'fs';
-
-// --- Constants and Regex Definitions ---
-
-/**
- * 💡 Standard file extensions handled by Vite/Rollup.
- * We only target common JavaScript/TypeScript extensions for module resolution.
- */
-const EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx'];
+import path from 'path';
 
 /**
- * The prefix used for all generated aliases (e.g., '@/components').
- * This corresponds to the root of the 'src' directory.
- */
-const ALIAS_PREFIX = '@';
-
-/**
- * Regex to extract the base name of a file, ignoring extensions and mode suffixes.
- * E.g., for 'api.development.js', it captures 'api'. For 'index.js', it captures 'index'.
- */
-const BASE_FILE_REGEX = /^([^.]+)\./;
-
-// --- Core Alias Collection Logic ---
-
-/**
- * Recursively scans a directory to collect all module files and determines
- * the final, prioritized path for each module, respecting Vite's current mode.
+ * Builds a complete Vite alias map by scanning the source directory.
  *
- * Mode-specific files (e.g., 'file.development.js' when mode is 'development') will always
- * overwrite generic files ('file.js'). Files for other modes (e.g.,
- * 'file.production.js' when mode is 'development') are ignored.
+ * ✅ Supports environment-specific files (e.g., api.development.js)
+ * ✅ Mode-specific files override generic ones
+ * ✅ Cross-platform path normalization
  *
- * @param {string} dir - The directory currently being scanned.
- * @param {string} mode - The current Vite build mode (e.g., 'production', 'development').
- * @param {Map<string, string>} aliasMap - The map to store the final aliases.
- * Key: module base path (e.g., 'src/utils/api').
- * Value: absolute path to the prioritized file (e.g., '/path/to/src/utils/api.development.js').
+ * @param {string} mode - Current Vite mode ('development' | 'production' | etc.)
+ * @param {{
+ *   root?: string,
+ *   prefix?: string
+ * }} [options]
+ * @returns {Record<string, string>} Alias mappings for Vite's `resolve.alias`
  */
-function collectPrioritizedAliases(dir, mode, aliasMap) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
+export function aliases(mode, options = {}) {
+  // --- Configurable Defaults ---
+  const {
+    root = 'src',
+    prefix = '@',
+  } = options;
 
-  // Dynamically create a regex to match files explicitly for the current mode.
-  // Example for 'development' mode: /\.development\.(js|jsx|ts|tsx)$/i
-  const escapedExtensions = EXTENSIONS.map(ext => `\\${ext}`).join('|');
-  const currentModePattern = new RegExp(`\\.${mode}(${escapedExtensions})$`, 'i');
+  const EXTENSIONS = ['.js', '.jsx', '.ts', '.tsx'];
+  const BASE_FILE_REGEX = /^([^.]+)\./;
+  const srcRoot = path.resolve(__dirname, root);
+  const escapedExts = EXTENSIONS.map(ext => `\\${ext}`).join('|');
+  const modePattern = new RegExp(`\\.${mode}(${escapedExts})$`, 'i');
 
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
+  const aliases = {};
 
-    if (entry.isDirectory()) {
-      // Recurse into subdirectories
-      collectPrioritizedAliases(fullPath, mode, aliasMap);
-      continue;
-    }
+  // --- Core Recursive Scanner ---
+  function scan(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name);
 
-    const ext = path.extname(entry.name);
-    if (!EXTENSIONS.includes(ext)) {
-      // Skip non-module files (like .css, .md, etc.)
-      continue;
-    }
-
-    // Determine base module name (e.g., 'api' from 'api.js')
-    const baseMatch = entry.name.match(BASE_FILE_REGEX);
-    if (!baseMatch) {
+      if (entry.isDirectory()) {
+        scan(fullPath);
         continue;
-    }
-    const baseName = baseMatch[1];
+      }
 
-    // The unique key for this module, regardless of extension or mode suffix.
-    // Example: 'path/to/src/utils/api'
-    const moduleKey = path.join(path.dirname(fullPath), baseName);
+      const ext = path.extname(entry.name);
+      if (!EXTENSIONS.includes(ext)) continue;
 
-    // --- Strict Filtering & Prioritization ---
+      const baseMatch = entry.name.match(BASE_FILE_REGEX);
+      if (!baseMatch) continue;
 
-    // 1. Check if it's the simple, generic file (e.g., 'api.js')
-    const isGenericFile = entry.name === (baseName + ext);
+      const baseName = baseMatch[1];
+      const isGeneric = entry.name === `${baseName}${ext}`;
+      const isModeSpecific = modePattern.test(entry.name);
 
-    // 2. Check if it's the current mode's file (e.g., 'api.development.js' when mode='development')
-    const isCurrentModeFile = currentModePattern.test(entry.name);
+      // Skip irrelevant variants (e.g., api.production.js in dev mode)
+      if (!isGeneric && !isModeSpecific) continue;
 
-    // Rule: Skip files that are neither generic NOR match the current mode.
-    // This ignores files like 'api.production.js' when the current mode is 'development'.
-    if (!isGenericFile && !isCurrentModeFile) {
-        continue;
-    }
+      // Compute alias key relative to src root
+      const relativeKey = path
+        .relative(srcRoot, path.join(path.dirname(fullPath), baseName))
+        .replace(/\\/g, '/');
+      const aliasKey = `${prefix}/${relativeKey}`;
 
-    // Prioritization Rule (Robust against file system order):
-    // If the module key is new, or if the current file is the mode-specific one,
-    // this file wins and updates the alias map. This ensures the mode-specific
-    // file always takes precedence over the generic file.
-    if (!aliasMap.has(moduleKey) || isCurrentModeFile) {
-        aliasMap.set(moduleKey, fullPath);
+      // Priority rule: mode-specific file always overrides generic one
+      if (!aliases[aliasKey] || isModeSpecific) {
+        aliases[aliasKey] = path.resolve(fullPath);
+      }
     }
   }
+
+  // --- Execute Recursive Scan ---
+  scan(srcRoot);
+
+  // Add the root-level prefix alias (lowest priority)
+  aliases[prefix] = srcRoot;
+
+  return aliases;
 }
 
-// --- Vite Configuration Export ---
-
-export default defineConfig(({ mode }) => {
-  // Resolve the absolute path to the source root directory
-  const srcRoot = path.resolve(__dirname, 'src');
-  const aliasMap = new Map();
-
-  // 1. Collect all prioritized file paths into the map based on the current mode
-  collectPrioritizedAliases(srcRoot, mode, aliasMap);
-
-  // 2. Transform the absolute path map into the final Vite alias format
-  const viteAliases = {};
-  for (const [filePath, absolutePath] of aliasMap.entries()) {
-    // Calculate the path relative to 'srcRoot' and convert backslashes for cross-platform compatibility
-    const relativeKey = path.relative(srcRoot, filePath).replace(/\\/g, '/');
-
-    // Generate the desired alias key (e.g., '@/utils/api') mapped to its absolute, resolved path.
-    viteAliases[`${ALIAS_PREFIX}/${relativeKey}`] = absolutePath;
-  }
-
-  return {
-    plugins: [
-      // Standard plugin for React projects
-      react()
-    ],
-    resolve: {
-      alias: {
-        // Must be defined first to ensure all collected aliases (e.g., '@/api' -> 'api.development.js')
-        // take precedence over the generic `@` alias below.
-        ...viteAliases,
-
-        // Standard alias for the src directory itself (e.g., import { logo } from '@/assets/logo.png')
-        [ALIAS_PREFIX]: srcRoot
-      },
-    },
-  };
-});
+export default defineConfig(({ mode }) => ({
+  plugins: [react()],
+  resolve: {
+    alias: aliases(mode),
+  },
+}));
 ```
 
 **How it works:**
