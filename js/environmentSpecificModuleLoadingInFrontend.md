@@ -111,7 +111,7 @@ import path from 'path';
  * }} [options]
  * @returns {Record<string, string>} Alias mappings for Vite's `resolve.alias`
  */
-export function aliases(mode, options = {}) {
+function aliases(mode, options = {}) {
   // --- Configurable Defaults ---
   const {
     root = 'src',
