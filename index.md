@@ -24,6 +24,7 @@
 - ## JavaScript
   - [Redux](./js/redux)
   - [Showing the Right Data with Out-of-Order Responses in Javascript](./js/outOfOrderResponse)
+  - [Building Resilient Frontends: Clean Architecture in React](./js/cleanArchitectureInReact)
   - [Environment-Specific Module Loading in React with Vite: The Strict Mode-Aliasing Pattern](./js/environmentSpecificModuleLoadingInFrontend)
 - ## Algorithm
   - [Overview](./algorithm/overview)
