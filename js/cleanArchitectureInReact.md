@@ -281,7 +281,7 @@ Choosing an architecture is always about trade-offs. Here is why this Clean Arch
 **Code Snippet(s) to Review:**
 [PASTE THE JUNIOR DEVELOPER'S CODE SNIPPET(S) HERE]
 ~~~
-
+~~~md
 **Role:** You are an experienced Senior Software Architect performing a mandatory, detailed code review. Your primary task is to assess whether the provided code adheres to the defined Clean Architecture (CA) pattern, ensuring strict separation of responsibilities and validation boundaries across all layers.
 
 ---
@@ -324,3 +324,4 @@ Choosing an architecture is always about trade-offs. Here is why this Clean Arch
 
 **Code Snippet(s) to Review:**
 [PASTE THE JUNIOR DEVELOPER'S CODE SNIPPET(S) HERE]
+~~~
